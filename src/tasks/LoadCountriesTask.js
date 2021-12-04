@@ -18,15 +18,14 @@ class LoadCountryTask {
       complete: (result) => this.#processCovidData(result.data),
     });
   };
-  
+
   #processCovidData = (covidCountries) => {
     for (let i = 0; i < features.length; i++) {
       const country = features[i];
-      //console.log(country);
       const covidCountry = covidCountries.find(
         (covidCountry) => country.properties.ISO_A3 === covidCountry.ISO3
       );
-
+        // console.log(covidCountry);
       country.properties.confirmed = 0;
       country.properties.confirmedText = 0;
 
