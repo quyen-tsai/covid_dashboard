@@ -80,32 +80,38 @@ TablePaginationActions.propTypes = {
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
 };
+function createData(city, country, cases, suspected, k) {
+  return { city, country, cases, suspected, k};
+}
 
-export default function CustomPaginationActionsTable() {
-  const [rows, setRows] = React.useState([]);
-  
-  const covidUrl =
-  "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
-
-  papa.parse(covidUrl, {
-    download: true,
-    header: true,
-    complete: (result) => processCovidData(result.data)
+ function processCovidData(res){
     
-  });
-
-  function processCovidData(res){
     var newRows = [].sort((a, b) => (a.cases < b.cases ? -1 : 1));
     for(let i = 0; i < res.length; i++){
         newRows.push(createData(res[i]['Province/State'],res[i]['Country/Region'], res[i]['Confirmed'], res[i]['Suspected'], i));
     }
-    setRows(newRows)
+    return newRows;
   }
 
-  function createData(city, country, cases, suspected, k) {
-    return { city, country, cases, suspected, k};
-  }
-
+export default function CustomPaginationActionsTable() {
+  const [rowss, setRows] = React.useState([]);
+  let rows = []
+  const covidUrl =
+  "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
+  React.useEffect(() => {
+    async function getData() {
+      const response = await fetch(covidUrl)
+      const reader = response.body.getReader()
+      const result = await reader.read() // raw array
+      const decoder = new TextDecoder('utf-8')
+      const csv = decoder.decode(result.value) // the csv text
+      const results = papa.parse(csv, { header: true }) // object with { data, errors, meta }
+      const rowss = results.data // array of objects
+      setRows(rowss)
+    }
+    getData()
+  }, [])
+  rows = processCovidData(rowss)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -121,7 +127,7 @@ export default function CustomPaginationActionsTable() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
+  
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500, maxWidth: 500,border: "3px solid rgb(0, 0, 0)" }} aria-label="custom pagination table">
