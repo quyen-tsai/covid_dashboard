@@ -81,35 +81,31 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-const rows = [
-  ].sort((a, b) => (a.cases < b.cases ? -1 : 1));
-  
-    const covidUrl =
-    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
-
-
-    papa.parse(covidUrl, {
-      download: true,
-      header: true,
-      complete: (result) => processCovidData(result.data)
-      
-    });
-
-function processCovidData(res){
-    for(let i = 0; i < res.length; i++){
-        rows.push(createData(res[i]['Province/State'],res[i]['Country/Region'], res[i]['Confirmed'], res[i]['Suspected'], i));
-    }
-    
-}
-
-console.log(rows);
-
-function createData(city, country, cases, suspected, k) {
-  return { city, country, cases, suspected, k};
-}
-
-
 export default function CustomPaginationActionsTable() {
+  const [rows, setRows] = React.useState([]);
+  
+  const covidUrl =
+  "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
+
+  papa.parse(covidUrl, {
+    download: true,
+    header: true,
+    complete: (result) => processCovidData(result.data)
+    
+  });
+
+  function processCovidData(res){
+    var newRows = [].sort((a, b) => (a.cases < b.cases ? -1 : 1));
+    for(let i = 0; i < res.length; i++){
+        newRows.push(createData(res[i]['Province/State'],res[i]['Country/Region'], res[i]['Confirmed'], res[i]['Suspected'], i));
+    }
+    setRows(newRows)
+  }
+
+  function createData(city, country, cases, suspected, k) {
+    return { city, country, cases, suspected, k};
+  }
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
