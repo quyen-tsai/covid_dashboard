@@ -9,6 +9,8 @@ import { FormControlLabel } from "@mui/material";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
+import Table1 from './entities/Table1';
+
 function App() {
   const [dark, setDark] = useState(false)
 
@@ -18,6 +20,7 @@ function App() {
       },
   })
 
+  const url1 = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
   return (
     <ThemeProvider theme={theme}>
     <div className='App'>
@@ -30,6 +33,7 @@ function App() {
       </IconButton>
       
       <Covid19 />
+      <Table1 url1={url1}/>
     </div>
     </ThemeProvider>
   );
