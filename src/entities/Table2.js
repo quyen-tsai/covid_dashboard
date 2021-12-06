@@ -80,15 +80,15 @@ TablePaginationActions.propTypes = {
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
 };
-function createData(city, country, cases, suspected, k) {
-  return { city, country, cases, suspected, k};
+function createData(date, city, state, vacc, k) {
+  return { date, city, state, vacc, k};
 }
 
  function processCovidData(res){
     
     var newRows = [].sort((a, b) => (a.cases < b.cases ? -1 : 1));
     for(let i = 0; i < res.length; i++){
-        newRows.push(createData(res[i]['Province/State'],res[i]['Country/Region'], res[i]['Confirmed'], res[i]['Suspected'], i));
+        newRows.push(createData(res[i]['date'],res[i]['recip_county'], res[i]['recip_state'], res[i]['series_complete_yes'], i));
     }
     return newRows;
   }
@@ -97,7 +97,7 @@ export default function CustomPaginationActionsTable() {
   const [rowss, setRows] = React.useState([]);
   let rows = []
   const covidUrl =
-  "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
+  "https://data.cdc.gov/resource/8xkx-amqh.csv";
   React.useEffect(() => {
     async function getData() {
       const response = await fetch(covidUrl)
@@ -111,6 +111,7 @@ export default function CustomPaginationActionsTable() {
     }
     getData()
   }, [])
+  console.log(rowss)
   rows = processCovidData(rowss)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -133,10 +134,10 @@ export default function CustomPaginationActionsTable() {
       <Table sx={{ minWidth: 500, maxWidth: 500,border: "3px solid rgb(0, 0, 0)" }} aria-label="custom pagination table">
       <TableHead sx={{border: "3px solid rgb(0, 0, 0)"}}>
           <TableRow>
-            <TableCell>Province/State</TableCell>
-            <TableCell>Country/Region</TableCell>
-            <TableCell >Confimed Cases</TableCell>
-            <TableCell >Suspected Cases</TableCell>
+          <TableCell>Date</TableCell>
+            <TableCell>County</TableCell>
+            <TableCell>State</TableCell>
+            <TableCell >Total Vaccinated</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -146,16 +147,16 @@ export default function CustomPaginationActionsTable() {
           ).map((row) => (
             <TableRow key={row.k}>
               <TableCell component="th" scope="row">
-                {row.city}
+                {row.date}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.country}
+                {row.city}
               </TableCell>
               <TableCell style={{ width: 80 }} >
-                {row.cases}
+                {row.state}
               </TableCell>
               <TableCell style={{ width: 80 }}>
-                {row.suspected}
+                {row.vacc}
               </TableCell>
             </TableRow>
           ))}

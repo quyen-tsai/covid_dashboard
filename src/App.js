@@ -10,7 +10,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import Table1 from './entities/Table1';
-
+import Table2 from './entities/Table2';
 function App() {
   const [dark, setDark] = useState(false)
 
@@ -34,6 +34,7 @@ function App() {
       
       <Covid19 />
       <Table1 url1={url1}/>
+      <Table2 />
     </div>
     </ThemeProvider>
   );
