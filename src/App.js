@@ -20,21 +20,30 @@ function App() {
       },
   })
 
-  const url1 = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
+  
   return (
     <ThemeProvider theme={theme}>
     <div className='App'>
       <CssBaseline />
       <h1>Covid Dashboard</h1>
-
+      <div className='but'>
       <FormControlLabel control={<Switch checked={!dark} onChange={() => setDark(!dark)} />} label={dark ? "Dark mode" : "Light mode"}/>
       <IconButton sx={{ ml: 1 }} onClick={() => setDark(!dark)} color="inherit">
         {dark ? <Brightness4Icon /> : <Brightness7Icon />}
       </IconButton>
+      </div>
+      <div className='tables'>
+      <Table1 />
+      <Table2 />
+      </div>
+      
+      
       
       <Covid19 />
-      <Table1 url1={url1}/>
-      <Table2 />
+      
+      
+      
+      
     </div>
     </ThemeProvider>
   );
