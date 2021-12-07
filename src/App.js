@@ -11,11 +11,11 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Table1 from './entities/Table1';
 import Table2 from './entities/Table2';
 function App() {
-  const [dark, setDark] = useState(false)
+  const [light, setLight] = useState(true)
 
   const theme = createTheme({
       palette: {
-          mode: dark ? 'dark' : 'light',
+          mode: light ? 'light' : 'dark',
       },
   })
 
@@ -26,9 +26,9 @@ function App() {
       <CssBaseline />
       <h1>Covid Dashboard</h1>
       <div className='but'>
-      <FormControlLabel control={<Switch checked={!dark} onChange={() => setDark(!dark)} />} label={dark ? "Dark mode" : "Light mode"}/>
-      <IconButton sx={{ ml: 1 }} onClick={() => setDark(!dark)} color="inherit">
-        {dark ? <Brightness4Icon /> : <Brightness7Icon />}
+      <FormControlLabel control={<Switch checked={!light} onChange={() => setLight(!light)} />} label={light ?"Light mode" : "Dark mode"}/>
+      <IconButton sx={{ ml: 1 }} onClick={() => setLight(!light)} color="inherit">
+        {light ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
       </div>
       <div className='tables'>
