@@ -8,7 +8,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FormControlLabel } from "@mui/material";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-
 import Table1 from './entities/Table1';
 import Table2 from './entities/Table2';
 function App() {
@@ -36,14 +35,7 @@ function App() {
       <Table1 />
       <Table2 />
       </div>
-      
-      
-      
       <Covid19 />
-      
-      
-      
-      
     </div>
     </ThemeProvider>
   );

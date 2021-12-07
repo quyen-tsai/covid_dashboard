@@ -4,7 +4,6 @@ import "leaflet/dist/leaflet.css";
 import "./CovidMap.css";
 const CovidMap = ({ countries }) => {
   const mapStyle = {
-    fillColor: "white",
     weight: 1,
     color: "black",
     fillOpacity: 0.5,
