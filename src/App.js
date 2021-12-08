@@ -10,6 +10,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Table1 from './entities/Table1';
 import Table2 from './entities/Table2';
+import Chart1 from '../src/entities/Chart1';
 function App() {
   const [light, setLight] = useState(true)
 
@@ -36,6 +37,7 @@ function App() {
       <Table2 />
       </div>
       <Covid19 />
+      <Chart1 />
     </div>
     </ThemeProvider>
   );
