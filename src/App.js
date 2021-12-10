@@ -8,32 +8,36 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FormControlLabel } from "@mui/material";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-
 import Table1 from './entities/Table1';
-
+import Table2 from './entities/Table2';
+import Chart1 from '../src/entities/Chart1';
 function App() {
-  const [dark, setDark] = useState(false)
+  const [light, setLight] = useState(true)
 
   const theme = createTheme({
       palette: {
-          mode: dark ? 'dark' : 'light',
+          mode: light ? 'light' : 'dark',
       },
   })
 
-  const url1 = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/archived_data/archived_daily_case_updates/01-21-2020_2200.csv";
+  
   return (
     <ThemeProvider theme={theme}>
     <div className='App'>
       <CssBaseline />
       <h1>Covid Dashboard</h1>
-
-      <FormControlLabel control={<Switch checked={!dark} onChange={() => setDark(!dark)} />} label={dark ? "Dark mode" : "Light mode"}/>
-      <IconButton sx={{ ml: 1 }} onClick={() => setDark(!dark)} color="inherit">
-        {dark ? <Brightness4Icon /> : <Brightness7Icon />}
+      <div className='but'>
+      <FormControlLabel control={<Switch checked={!light} onChange={() => setLight(!light)} />} label={light ?"Light mode" : "Dark mode"}/>
+      <IconButton sx={{ ml: 1 }} onClick={() => setLight(!light)} color="inherit">
+        {light ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
-      
+      </div>
+      <div className='tables'>
+      <Table1 />
+      <Table2 />
+      </div>
       <Covid19 />
-      <Table1 url1={url1}/>
+      <Chart1 />
     </div>
     </ThemeProvider>
   );
