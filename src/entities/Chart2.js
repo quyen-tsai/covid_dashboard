@@ -4,23 +4,23 @@ var Component = React.Component;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 var API_KEY = '7d70b182bb96459c8773ba8e776b09a1';
-const DAY_CHECK = 30; // Show data from every x days
+const DAY_CHECK = 10; // Show data from every x days
  
 var dataPoints =[];
-class Chart1 extends Component {
+class Chart2 extends Component {
  
-	render() {
+	render() {	
 		const options = {
 			theme: this.props.mode ? "light2" : "dark1",
 			title: {
-				text: "US COVID Infection Rates"
+				text: "US COVID Vaccinations Completed Ratio"
 			},
 			axisY: {
-				title: "Infection Rate",
+				title: "Vaccinations Completed Ratio",
+                maximum: 1,
 			},
 			data: [{
 				type: "area",
-				color: "#ab3838",
 				xValueFormatString: "MMM YYYY",
 				yValueFormatString: "0.00",
 				dataPoints: dataPoints
@@ -45,16 +45,16 @@ class Chart1 extends Component {
 		.then(function(data) {
 			data = data.metricsTimeseries
 			for (var i = data.length - 1; i > 0; i -= DAY_CHECK) {
-				if (data[i].infectionRate) {
-					dataPoints.push({
-						x: new Date(data[i].date),
-						y: data[i].infectionRate
-					});
-				}
+                if (data[i].vaccinationsCompletedRatio) {
+                    dataPoints.push({
+                        x: new Date(data[i].date),
+                        y: data[i].vaccinationsCompletedRatio
+                    });
+                }
 			}
 			chart.render();
 		});
 	}
 }
-export default Chart1;
+export default Chart2;
  
