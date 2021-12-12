@@ -2,7 +2,9 @@ h1 {
     text-align: center;
 }
 
+
 .App {
+    font-family: Sans-Serif;
     display: flex;
     flex-direction: column;
 }

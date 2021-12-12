@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./App.css";
 import Covid19 from "./components/Covid19";
+import Header from "./components/Header";
 import IconButton from '@mui/material/IconButton';
 import Switch from '@mui/material/Switch';
 import { CssBaseline } from "@mui/material";
@@ -28,7 +29,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <div className='App'>
       <CssBaseline />
-      <h1>Covid Dashboard</h1>
+        <Header />
       <div className='but'>
       <FormControlLabel control={<Switch checked={!light} onChange={() => setLight(!light)} />} label={light ?"Light mode" : "Dark mode"}/>
       <IconButton sx={{ ml: 1 }} onClick={() => setLight(!light)} color="inherit">

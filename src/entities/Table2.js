@@ -130,14 +130,14 @@ export default function CustomPaginationActionsTable() {
   };
   
   return (
-    <TableContainer component={Paper} sx={{border: "10px solid rgba(255,255,255,.5)"}}>
+    <TableContainer component={Paper} sx={{border: "10px solid rgba(255,255,255,.5)"}} >
       <Table sx={{border: "3px solid rgb(0, 0, 0)"}} aria-label="custom pagination table">
       <TableHead sx={{border: "3px solid rgb(0, 0, 0)"}}>
-          <TableRow>
-          <TableCell>Date</TableCell>
-            <TableCell>County</TableCell>
-            <TableCell>State</TableCell>
-            <TableCell >Total Vaccinated</TableCell>
+          <TableRow >
+          <TableCell sx= {{fontSize:'12px'}}>Date</TableCell>
+            <TableCell sx= {{fontSize:'12px'}}>County</TableCell>
+            <TableCell sx= {{fontSize:'12px'}}>State</TableCell>
+            <TableCell sx= {{fontSize:'12px'}}>Total Vaccinated</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -146,16 +146,16 @@ export default function CustomPaginationActionsTable() {
             : rows
           ).map((row) => (
             <TableRow key={row.k}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx= {{fontSize:'12px'}}>
                 {row.date}
               </TableCell>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx= {{fontSize:'12px'}}>
                 {row.city}
               </TableCell>
-              <TableCell style={{ width: 80 }} >
+              <TableCell style={{ width: 80 }}  sx= {{fontSize:'12px'}}>
                 {row.state}
               </TableCell>
-              <TableCell style={{ width: 80 }}>
+              <TableCell style={{ width: 80 }} sx= {{fontSize:'12px'}}>
                 {row.vacc}
               </TableCell>
             </TableRow>
@@ -163,13 +163,14 @@ export default function CustomPaginationActionsTable() {
 
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+              <TableCell colSpan={6} sx= {{fontSize:'12px'}}/>
             </TableRow>
           )}
         </TableBody>
-        <TableFooter>
+        <TableFooter >
           <TableRow>
             <TablePagination
+            sx= {{fontSize:'12px'}}
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
               count={rows.length}

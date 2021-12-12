@@ -133,10 +133,10 @@ export default function CustomPaginationActionsTable() {
       <Table sx={{border: "3px solid rgb(0, 0, 0)"}} aria-label="custom pagination table">
       <TableHead sx={{border: "3px solid rgb(0, 0, 0)"}}>
           <TableRow>
-            <TableCell>Province/State</TableCell>
-            <TableCell>Country/Region</TableCell>
-            <TableCell >Confimed Cases</TableCell>
-            <TableCell >Suspected Cases</TableCell>
+            <TableCell sx= {{fontSize:'12px'}}>Province/State</TableCell>
+            <TableCell sx= {{fontSize:'12px'}}>Country/Region</TableCell>
+            <TableCell sx= {{fontSize:'12px'}}>Confimed Cases</TableCell>
+            <TableCell sx= {{fontSize:'12px'}}>Suspected Cases</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -145,16 +145,16 @@ export default function CustomPaginationActionsTable() {
             : rows
           ).map((row) => (
             <TableRow key={row.k}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx= {{fontSize:'12px'}}>
                 {row.city}
               </TableCell>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx= {{fontSize:'12px'}}>
                 {row.country}
               </TableCell>
-              <TableCell style={{ width: 80 }} >
+              <TableCell style={{ width: 80 }} sx= {{fontSize:'12px'}}>
                 {row.cases}
               </TableCell>
-              <TableCell style={{ width: 80 }}>
+              <TableCell style={{ width: 80 }} sx= {{fontSize:'12px'}}>
                 {row.suspected}
               </TableCell>
             </TableRow>
@@ -162,13 +162,14 @@ export default function CustomPaginationActionsTable() {
 
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+              <TableCell colSpan={6} sx= {{fontSize:'12px'}}/>
             </TableRow>
           )}
         </TableBody>
         <TableFooter>
           <TableRow>
             <TablePagination
+              sx= {{fontSize:'12px'}}
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
               count={rows.length}
@@ -179,6 +180,7 @@ export default function CustomPaginationActionsTable() {
                   'aria-label': 'rows per page',
                 },
                 native: true,
+                
               }}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}

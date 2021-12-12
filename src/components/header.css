@@ -1,0 +1,10 @@
+.header{
+    background-image: url(../../../covid_dashboard/src/img/cov.png);
+}
+
+.header > h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    color: rgb(10, 47, 81);
+    font-size: 50px;
+}
