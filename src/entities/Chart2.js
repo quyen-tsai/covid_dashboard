@@ -27,7 +27,7 @@ class Chart2 extends Component {
 			}]
 		}
 		return (
-		<div>
+		<div className='ChartCont'>
 			<CanvasJSChart options = {options} 
 				 onRef={ref => this.chart = ref}
 			/>

@@ -129,8 +129,8 @@ export default function CustomPaginationActionsTable() {
   };
   
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{border: "3px solid rgb(0, 0, 0)" }} aria-label="custom pagination table">
+    <TableContainer component={Paper} sx={{border: "10px solid rgba(255,255,255,.5)"}}>
+      <Table sx={{border: "3px solid rgb(0, 0, 0)"}} aria-label="custom pagination table">
       <TableHead sx={{border: "3px solid rgb(0, 0, 0)"}}>
           <TableRow>
             <TableCell>Province/State</TableCell>

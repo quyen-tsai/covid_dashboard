@@ -2,14 +2,21 @@ h1 {
     text-align: center;
 }
 
-.App{
-    display:flex;
-        flex-direction: column;
+.App {
+    display: flex;
+    flex-direction: column;
 }
 
-.tables{
+.tables {
     display: flex;
     flex-direction: row;
 }
 
-    
+.ChartCont {
+    width: 33.333333333%;
+    border: 10px solid #CCCCCC;
+    box-sizing: border-box;
+    float: left;
+
+}
+
