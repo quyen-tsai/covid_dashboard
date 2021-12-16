@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/covid_dashboard/static/css/main.ad7701b9.chunk.css",
+    "main.js": "/covid_dashboard/static/js/main.39fb2ba0.chunk.js",
+    "main.js.map": "/covid_dashboard/static/js/main.39fb2ba0.chunk.js.map",
+    "runtime-main.js": "/covid_dashboard/static/js/runtime-main.59217495.js",
+    "runtime-main.js.map": "/covid_dashboard/static/js/runtime-main.59217495.js.map",
+    "static/css/2.e1b8a80b.chunk.css": "/covid_dashboard/static/css/2.e1b8a80b.chunk.css",
+    "static/js/2.6dfe5e1f.chunk.js": "/covid_dashboard/static/js/2.6dfe5e1f.chunk.js",
+    "static/js/2.6dfe5e1f.chunk.js.map": "/covid_dashboard/static/js/2.6dfe5e1f.chunk.js.map",
+    "index.html": "/covid_dashboard/index.html",
+    "static/css/2.e1b8a80b.chunk.css.map": "/covid_dashboard/static/css/2.e1b8a80b.chunk.css.map",
+    "static/css/main.ad7701b9.chunk.css.map": "/covid_dashboard/static/css/main.ad7701b9.chunk.css.map",
+    "static/js/2.6dfe5e1f.chunk.js.LICENSE.txt": "/covid_dashboard/static/js/2.6dfe5e1f.chunk.js.LICENSE.txt",
+    "static/media/header.css": "/covid_dashboard/static/media/cov.8704dc34.png",
+    "static/media/bootstrap.css": "/covid_dashboard/static/media/glyphicons-halflings-regular.be810be3.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.59217495.js",
+    "static/css/2.e1b8a80b.chunk.css",
+    "static/js/2.6dfe5e1f.chunk.js",
+    "static/css/main.ad7701b9.chunk.css",
+    "static/js/main.39fb2ba0.chunk.js"
+  ]
+}
